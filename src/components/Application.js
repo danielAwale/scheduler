@@ -16,6 +16,7 @@ export default function Application() {
   })
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const setDay = day => setState({ ...state, day });
 
 
   useEffect(() => {
@@ -35,8 +36,6 @@ export default function Application() {
         console.error(e);
       });
   }, []);
-
-  const setDay = day => setState({ ...state, day });
 
 
   return (
