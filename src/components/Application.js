@@ -23,14 +23,17 @@ export default function Application() {
   useEffect(() => {
     const dayAPI = axios.get('http://localhost:8001/api/days')
     const appointmentAPI = axios.get('http://localhost:8001/api/appointments')
+    const interviewersAPI = axios.get('http://localhost:8001/api/interviewers')
     Promise.all([
       dayAPI,
-      appointmentAPI
+      appointmentAPI,
+      interviewersAPI
     ]).then((res) => {
       setState((prev) => ({
         ...prev,
         days: res[0].data,
         appointments: res[1].data,
+        interviewers: res[2].data
       }));
     })
       .catch((e) => {
