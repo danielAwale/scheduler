@@ -4,11 +4,13 @@ export default function useVisualMode(initialValue) {
   const [mode, setMode] = useState(initialValue);
   const [history, setHistory] = useState([initialValue]);
 
-  function transition(transitionMode) {
+  function transition(transitionMode, replace = false) {
     setMode(transitionMode);
-    history.push(transitionMode);
-    setHistory([...history]);
-
+    if (replace === true) {
+      history[history.length - 1] = transitionMode
+    } else {
+      history.push(transitionMode)
+    }
   }
 
   function back() {
