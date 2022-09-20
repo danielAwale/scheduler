@@ -4,3 +4,14 @@ export const getAppointmentsForDay = (state, day) => {
 
   return selectedDay.appointments.map((id) => state.appointments[id]);
 };
+
+export const getInterview = (state, interview) => {
+  const interviewObject = {};
+  if (interview === null) {
+    return null;
+  } else {
+    interviewObject.student = interview.student;
+    interviewObject.interviewer = state.interviewers[interview.interviewer];
+  }
+  return interviewObject;
+}
