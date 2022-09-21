@@ -80,7 +80,7 @@ export default function Application() {
       <section className="schedule">
         <ul>
           {schedule}
-          <Appointment time="5pm" />
+          <Appointment key="last" time="5pm" />
         </ul>
       </section>
     </main>
