@@ -46,6 +46,26 @@ export default function Application() {
         })
     };
 
+    const cancelInterview = (id) => {
+      const appointment = {
+        ...state.appointments[id],
+        interview: null,
+      };
+
+      const appointments = {
+        ...state.appointments,
+        [id]: appointment,
+      };
+
+      return axios.delete('/api/appointments/' + id)
+        .then((res) => {
+          setState((prev) => ({
+          }));
+        })
+
+        .catch((err) => { console.error(err); });
+    };
+
 
     return (
       <Appointment
@@ -55,6 +75,7 @@ export default function Application() {
         interview={interview}
         interviewers={daysInterviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
