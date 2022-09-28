@@ -23,7 +23,14 @@ export default function Application() {
     const interview = getInterview(state, appointment.interview);
 
     function bookInterview(id, interview) {
-      console.log(id, interview);
+      const appointment = {
+        ...state.appointments[id],
+        interview: { ...interview }
+      };
+      const appointments = {
+        ...state.appointments,
+        [id]: appointment
+      };
     }
 
     return (
