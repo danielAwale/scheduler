@@ -2,7 +2,7 @@ import React from 'react';
 import "components/InterviewerList.scss";
 import InterviewerListItem from './InterviewerListItem';
 
-export default function InterviewList(props) {
+export default function InterviewerList(props) {
   const interviewers = props.interviewers.map(interviewer => {
     return (
       <InterviewerListItem
@@ -16,7 +16,7 @@ export default function InterviewList(props) {
   })
   return (
     <section className="interviewers">
-      <h4 className="interviewers__header text--light">Interviewer</h4>
+      <h4 className="interviewers__header text--light">Interviewers</h4>
       <ul className="interviewers__list">{interviewers}</ul>
     </section>
   )
