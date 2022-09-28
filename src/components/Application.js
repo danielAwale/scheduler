@@ -41,9 +41,6 @@ export default function Application() {
             };
           });
         })
-        .catch((err) => {
-          console.error(err);
-        })
     };
 
     const cancelInterview = (id) => {
@@ -59,11 +56,8 @@ export default function Application() {
 
       return axios.delete('/api/appointments/' + id)
         .then((res) => {
-          setState((prev) => ({
-          }));
+          setState((prev) => ({ ...prev, appointments, }));
         })
-
-        .catch((err) => { console.error(err); });
     };
 
 
