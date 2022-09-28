@@ -21,12 +21,17 @@ export default function Application() {
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
 
+    function bookInterview(id, interview) {
+      console.log(id, interview);
+    }
+
     return (
       <Appointment
         key={appointment.id}
         id={appointment.id}
         time={appointment.time}
         interview={interview}
+        bookInterview={bookInterview}
       />
     );
   });
