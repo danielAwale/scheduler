@@ -31,6 +31,16 @@ export default function Application() {
         ...state.appointments,
         [id]: appointment
       };
+
+      return axios.put(`/api/appointments/${id}`, { interview })
+        .then(response => {
+          if (response.status === 204) {
+            setState({
+              ...state,
+              appointments
+            });
+          }
+        });
     }
 
     return (
