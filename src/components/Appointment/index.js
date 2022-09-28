@@ -37,6 +37,7 @@ export default function Appointment(props) {
         <Form
           interviewers={[]}
           onCancel={back}
+          onSave={save}
         />
       }
 
