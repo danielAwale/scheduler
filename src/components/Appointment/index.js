@@ -15,8 +15,9 @@ export default function Appointment(props) {
   const FORM = "FORM";
   const SAVING = "SAVING";
   const DELETING = "DELETING";
-  const ERROR = "ERROR";
   const CONFIRM = "CONFIRM";
+  const ERROR_SAVE = 'ERROR_SAVE';
+  const ERROR_DELETE = 'ERROR_DELETE';
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -35,7 +36,7 @@ export default function Appointment(props) {
       interviewer
     };
     transition(SAVING);
-    props.bookInterview(props.id, interview).then(() => transition(SHOW));
+    props.bookInterview(props.id, interview).then(() => transition(SHOW)).catch(error => transition(ERROR_SAVE, true));;
   }
 
   const confirmDelete = () => {
@@ -44,11 +45,7 @@ export default function Appointment(props) {
     props.cancelInterview(props.id)
       .then((res) => {
         transition(EMPTY);
-      })
-      .catch((err) => {
-        transition(ERROR);
-        console.error(err);
-      });
+      }).catch(error => transition(ERROR_DELETE, true));
   };
 
 
@@ -76,7 +73,8 @@ export default function Appointment(props) {
       {mode === CONFIRM && <Confirm onCancel={back} onConfirm={confirmDelete} message="Delete the appointment?" />}
 
       {mode === DELETING && <Status message='Deleting' />}
-      {mode === ERROR && <Error onClose={back} />}
+      {mode === ERROR_SAVE && <Error onClose={back} message="Something went wrong!" />}
+      {mode === ERROR_DELETE && <Error onClose={back} message="Something went wrong!" />}
 
 
     </article>
