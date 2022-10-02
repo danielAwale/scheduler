@@ -4,7 +4,7 @@ import InterviewerList from 'components/InterviewerList'
 
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
-  const [interviewer, setInterviewer] = useState((props.interviewer && props.interviewer.id) || null);
+  const [interviewer, setInterviewer] = useState((props.interviewer) || null);
   const [error, setError] = useState("");
 
   const reset = () => {
@@ -26,7 +26,7 @@ export default function Form(props) {
       setError("Please select an interviewer");
       return;
     }
-
+    console.log(interviewer)
     props.onSave(student, interviewer);
   }
 

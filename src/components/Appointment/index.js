@@ -18,6 +18,7 @@ export default function Appointment(props) {
   const CONFIRM = "CONFIRM";
   const ERROR_SAVE = 'ERROR_SAVE';
   const ERROR_DELETE = 'ERROR_DELETE';
+  const EDIT = "EDIT"
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -48,6 +49,10 @@ export default function Appointment(props) {
       }).catch(error => transition(ERROR_DELETE, true));
   };
 
+  function edit() {
+    transition(EDIT);
+  }
+
 
 
   return (
@@ -59,7 +64,7 @@ export default function Appointment(props) {
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onDelete={() => transition(CONFIRM)}
-          onEdit={() => transition(FORM)}
+          onEdit={edit}
         />
       }
       {mode === FORM &&
@@ -75,6 +80,15 @@ export default function Appointment(props) {
       {mode === DELETING && <Status message='Deleting' />}
       {mode === ERROR_SAVE && <Error onClose={back} message="Something went wrong!" />}
       {mode === ERROR_DELETE && <Error onClose={back} message="Something went wrong!" />}
+      {mode === EDIT &&
+        <Form
+          student={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+          interviewers={props.interviewers}
+          onCancel={back}
+          onSave={save}
+        />
+      }
 
 
     </article>
