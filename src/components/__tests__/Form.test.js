@@ -70,7 +70,7 @@ describe("Form", () => {
 
   it("calls onCancel and resets the input field", () => {
     const onCancel = jest.fn();
-    const { getByText, getByPlaceholderText, queryByText } = render(
+    const { getByText, getByPlaceholderText } = render(
       <Form
         interviewers={interviewers}
         name="Lydia Mill-Jones"
