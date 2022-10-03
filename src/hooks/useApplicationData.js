@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default () => {
-  // = state =
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -73,7 +72,7 @@ export default () => {
     days[dayOfWeek] = day;
 
 
-    return axios.put('/api/appointments/' + id, { interview })
+    return axios.put(`/api/appointments/${id}`, { interview })
       .then((res) => {
         setState((prev) => ({
           ...prev,
