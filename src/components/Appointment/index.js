@@ -25,13 +25,6 @@ export default function Appointment(props) {
   );
 
   function save(student, interviewer) {
-    if (!student || !interviewer) return;
-    if (props.interview && (
-      student === props.interview.student &&
-      interviewer === props.interview.interviewer.id)) {
-      back();
-      return;
-    };
     const interview = {
       student,
       interviewer
@@ -41,7 +34,6 @@ export default function Appointment(props) {
   }
 
   const confirmDelete = () => {
-    // make axios put request in app.js
     transition(DELETING);
     props.cancelInterview(props.id)
       .then((res) => {
@@ -85,11 +77,10 @@ export default function Appointment(props) {
           student={props.interview.student}
           interviewer={props.interview.interviewer.id}
           interviewers={props.interviewers}
-          onCancel={() => props.onCancel}
+          onCancel={back}
           onSave={save}
         />
       }
-
 
     </article>
   )
