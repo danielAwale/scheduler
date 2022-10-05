@@ -48,13 +48,16 @@ npm run storybook
 ## Screenshot Snippets
 
 ### Adding an Appointment
-(https://user-images.githubusercontent.com/101018212/193962323-5526b654-39ae-4bdd-bf0f-ec1687c5dd58.mov)
+![Add Interview](https://user-images.githubusercontent.com/101018212/193963218-17c0df60-4d89-4694-97d7-89c54c0bffac.gif)
+
 
 ### Editing an Appointment
-(https://user-images.githubusercontent.com/101018212/193962480-7a0fa11a-1b12-48f1-b356-65ad75e0e513.mov)
+![Edit](https://user-images.githubusercontent.com/101018212/193963225-f9d8fd99-c9ba-49d1-ab75-149692564cde.gif)
+
 
 ### Deleting an Appointment
-(https://user-images.githubusercontent.com/101018212/193962532-086dc334-ff89-4c17-92fb-24b1e0ac94e0.mov)
+![Delete Interview](https://user-images.githubusercontent.com/101018212/193963235-77fc651d-41d4-4b7a-a693-ffef4f5a2e49.gif)
+
 
 
 
