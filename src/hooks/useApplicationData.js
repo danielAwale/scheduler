@@ -27,17 +27,6 @@ export default () => {
 
   const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
 
-  function findDay(day) {
-    const daysOfWeek = {
-      Monday: 0,
-      Tuesday: 1,
-      Wednesday: 2,
-      Thursday: 3,
-      Friday: 4
-    }
-    return daysOfWeek[day]
-  }
-
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
@@ -49,27 +38,14 @@ export default () => {
       [id]: appointment,
     };
 
-    const dayOfWeek = findDay(state.day)
-
-    let day = {
-      ...state.days[dayOfWeek],
-      spots: state.days[dayOfWeek]
-    }
-
-    if (!state.appointments[id].interview) {
-      day = {
-        ...state.days[dayOfWeek],
-        spots: state.days[dayOfWeek].spots - 1
+    const foundDay = state.days.find((day) => day.appointments.includes(id));
+    const days = state.days.map((day, index) => {
+      if (day.name === foundDay.name && state.appointments[id].interview === null) {
+        return { ...day, spots: day.spots - 1 };
+      } else {
+        return day;
       }
-    } else {
-      day = {
-        ...state.days[dayOfWeek],
-        spots: state.days[dayOfWeek].spots
-      }
-    }
-
-    let days = state.days
-    days[dayOfWeek] = day;
+    });
 
 
     return axios.put(`/api/appointments/${id}`, { interview })
@@ -94,15 +70,14 @@ export default () => {
       [id]: appointment,
     };
 
-    const dayOfWeek = findDay(state.day)
-
-    const day = {
-      ...state.days[dayOfWeek],
-      spots: state.days[dayOfWeek].spots + 1
-    }
-
-    let days = state.days
-    days[dayOfWeek] = day;
+    const foundDay = state.days.find((day) => day.appointments.includes(id));
+    const days = state.days.map((day, index) => {
+      if (day.name === foundDay.name) {
+        return { ...day, spots: day.spots + 1 };
+      } else {
+        return day;
+      }
+    });
 
     return axios.delete('/api/appointments/' + id)
       .then((res) => {
