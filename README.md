@@ -49,6 +49,12 @@ npm run storybook
 
 ### Adding an Appointment
 
+![Add Interview](https://user-images.githubusercontent.com/101018212/193963218-17c0df60-4d89-4694-97d7-89c54c0bffac.gif)
+
 ### Editing an Appointment
 
+![Edit](https://user-images.githubusercontent.com/101018212/193963225-f9d8fd99-c9ba-49d1-ab75-149692564cde.gif)
+
 ### Deleting an Appointment
+
+![Delete Interview](https://user-images.githubusercontent.com/101018212/193963235-77fc651d-41d4-4b7a-a693-ffef4f5a2e49.gif)
