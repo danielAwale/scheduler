@@ -27,7 +27,7 @@ Dependencies include:
 
 # Database & API
 
-For this app to fully function we must run the clien and the API server.
+For this app to fully function we must run the client and the API server.
 
 - Fork and Clone the [scheduler-api](https://github.com/lighthouse-labs/scheduler-api) server
 - Follow the set-up instructions in the README.md file
