@@ -24,6 +24,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  // save function will take save the interview call on the bookInterview found in hooks directory
   function save(student, interviewer) {
     const interview = {
       student,
@@ -36,6 +37,7 @@ export default function Appointment(props) {
       .catch(error => transition(ERROR_SAVE, true));;
   }
 
+  // delete function will take the saved interview and delete it by calling on the cancelInterview found in hooks directory
   const confirmDelete = () => {
     transition(DELETING, true);
     props
@@ -45,11 +47,10 @@ export default function Appointment(props) {
       }).catch(error => transition(ERROR_DELETE, true));
   };
 
+  // editing the interview
   function edit() {
     transition(EDIT);
   }
-
-
 
   return (
     <article className='appointment' data-testid="appointment">

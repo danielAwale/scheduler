@@ -27,6 +27,7 @@ export default () => {
 
   const setDay = (day) => { setState((prev) => ({ ...prev, day })); };
 
+  // bookInterview saves an interview appointment in the database using the API server.
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
@@ -58,7 +59,7 @@ export default () => {
       });
   };
 
-
+  // CancelInterview will delete the interview from the database
   const cancelInterview = (id) => {
     const appointment = {
       ...state.appointments[id],
